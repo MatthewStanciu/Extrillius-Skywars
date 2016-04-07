@@ -1,0 +1,30 @@
+name: Skywars
+Author: TechBug2012
+main: net.extrillius.skywars.Skywars
+version: 1.0
+description: A custom Skywars plugin for Extrillius
+
+commands:
+  join:
+    description: Join a map.
+    usage: /join <map>
+  create:
+    description: Create a map.
+    usage: /create <map>
+  delete:
+    description: Delete an existing map.
+    usage: /delete <map>
+  island:
+    description: Set up the islands for the Skywars map.
+    usage: /island <map> <number>
+
+permissions:
+  skywars.create:
+    description: Be able to create maps
+    default: op
+  skywars.delete:
+    description: Be able to delete a map
+    default: op
+  skywars.island:
+    description: Be able to set the island locations
+    default: op
