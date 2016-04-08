@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7c7ec244-4e14-4043-8b76-56b5456c3586" name="Default" comment="At this point I'm not sure how to save the data for the maps. I'll look more into this thread: https://bukkit.org/threads/saving-player-data.286397/">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/Skywars_jar.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/net/extrillius/skywars/ConfigAccessor.java" />
+    <list default="true" id="7c7ec244-4e14-4043-8b76-56b5456c3586" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Skywars.iml" afterPath="$PROJECT_DIR$/Skywars.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/extrillius/skywars/Skywars.java" afterPath="$PROJECT_DIR$/src/net/extrillius/skywars/Skywars.java" />
     </list>
     <ignored path="Skywars.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,8 +27,8 @@
       <file leaf-file-name="Skywars.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/net/extrillius/skywars/Skywars.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="56" column="69" selection-start-line="56" selection-start-column="69" selection-end-line="56" selection-end-column="69" />
+            <state relative-caret-position="435">
+              <caret line="68" column="60" selection-start-line="68" selection-start-column="60" selection-end-line="68" selection-end-column="60" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -420,11 +416,19 @@
       <option name="presentableId" value="Default" />
       <updated>1459180993993</updated>
     </task>
+    <task id="LOCAL-00001" summary="At this point I'm not sure how to save the data for the maps. I'll look more into this thread: https://bukkit.org/threads/saving-player-data.286397/">
+      <created>1460145173214</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1460145173214</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="411" y="143" width="1266" height="660" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -640,8 +644,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/extrillius/skywars/Skywars.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="56" column="69" selection-start-line="56" selection-start-column="69" selection-end-line="56" selection-end-column="69" />
+        <state relative-caret-position="435">
+          <caret line="68" column="60" selection-start-line="68" selection-start-column="60" selection-end-line="68" selection-end-column="60" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
