@@ -63,10 +63,6 @@ public class Skywars extends JavaPlugin implements Listener {
                 getWorldGuard().getRegionManager(p.getWorld()).addRegion(region);
 
                 sender.sendMessage(ChatColor.GREEN + "Map region has been set.");
-
-                sender.sendMessage(ChatColor.DARK_AQUA + "Now, it's time to set up the map.");
-                sender.sendMessage(ChatColor.DARK_AQUA + "Stand in the middle of each of your islands");
-                sender.sendMessage(ChatColor.DARK_AQUA + "and type " + ChatColor.AQUA + "/island <number>");
             }
             if (args.length > 1) {
                 sender.sendMessage(ChatColor.RED + "Too many arguments!");
@@ -74,18 +70,6 @@ public class Skywars extends JavaPlugin implements Listener {
             }
             if (args.length == 0) {
                 sender.sendMessage(ChatColor.GRAY + "Usage:" + ChatColor.GREEN + "/create <map>");
-            }
-        }
-        if (cmd.getName().equalsIgnoreCase("island")) {
-            if (args.length == 2) {
-                // do the thing
-            }
-            if (args.length < 2) {
-                sender.sendMessage(ChatColor.GRAY + "Usage: " + ChatColor.GREEN + "/island <map> <number>");
-            }
-            if (args.length > 2) {
-                sender.sendMessage(ChatColor.RED + "Too many arguments!");
-                sender.sendMessage(ChatColor.GRAY + "Usage: " + ChatColor.GREEN + "/island <map> <number>");
             }
         }
 
