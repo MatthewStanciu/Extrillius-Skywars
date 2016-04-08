@@ -1,13 +1,8 @@
 package net.extrillius.skywars;
 
-import com.sk89q.worldedit.BlockVector;
 import com.sk89q.worldedit.bukkit.WorldEditPlugin;
 import com.sk89q.worldedit.bukkit.selections.Selection;
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
-import com.sk89q.worldguard.bukkit.event.entity.DamageEntityEvent;
-import com.sk89q.worldguard.protection.flags.DefaultFlag;
-import com.sk89q.worldguard.protection.flags.StateFlag;
-import com.sk89q.worldguard.protection.regions.ProtectedCuboidRegion;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -17,6 +12,8 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.ArrayList;
+
 /**
  * Created by mattbstanciu on 3/28/16.
  */
@@ -24,10 +21,14 @@ public class Skywars extends JavaPlugin implements Listener {
 
     WorldGuardPlugin worldGuardPlugin = new WorldGuardPlugin();
     WorldEditPlugin worldEditPlugin = new WorldEditPlugin();
+    private ConfigAccessor mapsAccessor;
 
     public void onEnable() {
         PluginManager pm = getServer().getPluginManager();
         pm.registerEvents(this, this);
+
+        this.mapsAccessor = new ConfigAccessor(this, "maps.yml");
+        this.mapsAccessor.getConfig().addDefault("maps", new ArrayList<String>()); // This is wrong!
     }
 
     public WorldEditPlugin getWorldEdit() {
@@ -53,16 +54,7 @@ public class Skywars extends JavaPlugin implements Listener {
                 if (!(sender.hasPermission("skywars.create"))) {
                     sender.sendMessage(ChatColor.RED + "Creating maps is an admin-only command.");
                 }
-                s = getWorldEdit().getSelection(p);
-                if (s == null) {
-                    sender.sendMessage(ChatColor.RED + "You haven't defined a selection.");
-                }
-                ProtectedCuboidRegion region = new ProtectedCuboidRegion(args[0],
-                        new BlockVector(s.getNativeMinimumPoint()), new BlockVector(s.getNativeMaximumPoint()));
-                region.setFlag(DefaultFlag.PVP, StateFlag.State.ALLOW);
-                getWorldGuard().getRegionManager(p.getWorld()).addRegion(region);
-
-                sender.sendMessage(ChatColor.GREEN + "Map region has been set.");
+                //this.mapsAccessor.getConfig().set("maps" + args[0])
             }
             if (args.length > 1) {
                 sender.sendMessage(ChatColor.RED + "Too many arguments!");

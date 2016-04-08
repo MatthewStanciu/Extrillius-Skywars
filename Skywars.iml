@@ -10,30 +10,14 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../craftbukkit_server.jar!/" />
+          <root url="jar://$USER_HOME$/Downloads/craftbukkit_server.jar!/" />
+          <root url="jar://$USER_HOME$/Downloads/worldguard-6.1.jar!/" />
+          <root url="jar://$USER_HOME$/Downloads/worldedit-bukkit-6.1.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="jar://$MODULE_DIR$/../craftbukkit_server.jar!/" />
+          <root url="jar://$USER_HOME$/Downloads/craftbukkit_server.jar!/" />
         </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/../worldedit-bukkit-6.1.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/../worldguard-6.1.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
       </library>
     </orderEntry>
   </component>
