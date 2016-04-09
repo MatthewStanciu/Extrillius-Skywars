@@ -1,8 +1,14 @@
 package net.extrillius.skywars;
 
+import com.sk89q.worldedit.BlockVector;
+import com.sk89q.worldedit.Vector;
 import com.sk89q.worldedit.bukkit.WorldEditPlugin;
+import com.sk89q.worldedit.bukkit.selections.CuboidSelection;
 import com.sk89q.worldedit.bukkit.selections.Selection;
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
+import com.sk89q.worldguard.protection.flags.DefaultFlag;
+import com.sk89q.worldguard.protection.flags.StateFlag;
+import com.sk89q.worldguard.protection.regions.ProtectedCuboidRegion;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -54,15 +60,28 @@ public class Skywars extends JavaPlugin implements Listener {
                 if (!(sender.hasPermission("skywars.create"))) {
                     sender.sendMessage(ChatColor.RED + "Creating maps is an admin-only command.");
                 }
-                //this.mapsAccessor.getConfig().set("maps" + args[0])
+                this.mapsAccessor.getConfig().set("maps." + args[0], "");
+                sender.sendMessage(ChatColor.GREEN + "Map " + ChatColor.DARK_AQUA + args[0] +
+                        ChatColor.GREEN + " has been added.");
+                sender.sendMessage(ChatColor.GREEN + "Now define a selection and type " +
+                        ChatColor.AQUA + "/island <map> <value>");
             }
             if (args.length > 1) {
                 sender.sendMessage(ChatColor.RED + "Too many arguments!");
-                return false;
+                sender.sendMessage(ChatColor.GRAY + "Usage: " + ChatColor.AQUA + "/create <map>");
             }
             if (args.length == 0) {
                 sender.sendMessage(ChatColor.GRAY + "Usage:" + ChatColor.GREEN + "/create <map>");
             }
+        }
+
+        if (cmd.getName().equalsIgnoreCase("island")) {
+            s = getWorldEdit().getSelection(p);
+            if (s == null) {
+                sender.sendMessage(ChatColor.RED + "Define a WorldEdit selection before running the /island command.");
+            }
+            // save the blocks to file
+
         }
 
         if (cmd.getName().equalsIgnoreCase("delete")) {
