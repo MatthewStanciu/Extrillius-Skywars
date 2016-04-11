@@ -4,6 +4,7 @@ import com.sk89q.worldedit.bukkit.WorldEditPlugin;
 import com.sk89q.worldedit.bukkit.selections.CuboidSelection;
 import com.sk89q.worldedit.bukkit.selections.Selection;
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
+import org.apache.commons.lang3.StringUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -27,7 +28,7 @@ public class Skywars extends JavaPlugin implements Listener {
     WorldEditPlugin worldEditPlugin = new WorldEditPlugin();
     private ConfigAccessor mapsAccessor;
     private ConfigAccessor valueAccessor; // I don't even know if this file is necessary or not.
-    private List<String> valueList;
+    private List<String> valueList; // I thought of making this List<Integer> but I already checked whether or not args[1] is a number.
 
     public void onEnable() {
         PluginManager pm = getServer().getPluginManager();
@@ -77,6 +78,10 @@ public class Skywars extends JavaPlugin implements Listener {
         }
 
         if (cmd.getName().equalsIgnoreCase("island")) {
+            if (!(StringUtils.isNumeric(args[1]))) {
+                sender.sendMessage(ChatColor.RED + "Your second argument must be a number!");
+                sender.sendMessage(ChatColor.RED + "Usage: " + ChatColor.GRAY + "/island <map> <value>");
+            }
             if (args.length > 2 || args.length < 2) {
                 sender.sendMessage(ChatColor.RED + "Usage: " + ChatColor.GRAY + "/island <map> <value>");
             }

@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7c7ec244-4e14-4043-8b76-56b5456c3586" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/net/extrillius/skywars/maps.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/Skywars_jar.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/Skywars_jar.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/extrillius/skywars/Skywars.java" afterPath="$PROJECT_DIR$/src/net/extrillius/skywars/Skywars.java" />
     </list>
@@ -30,8 +28,8 @@
       <file leaf-file-name="Skywars.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/net/extrillius/skywars/Skywars.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="95" column="87" selection-start-line="95" selection-start-column="87" selection-end-line="95" selection-end-column="87" />
+            <state relative-caret-position="285">
+              <caret line="100" column="87" selection-start-line="100" selection-start-column="87" selection-end-line="100" selection-end-column="87" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -441,7 +439,14 @@
       <option name="project" value="LOCAL" />
       <updated>1460212675679</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Saving Island Data">
+      <created>1460384610542</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1460384610542</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -488,7 +493,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="At this point I'm not sure how to save the data for the maps. I'll look more into this thread: https://bukkit.org/threads/saving-player-data.286397/" />
     <MESSAGE value="Preparing to save blocks" />
-    <option name="LAST_COMMIT_MESSAGE" value="Preparing to save blocks" />
+    <MESSAGE value="Saving Island Data" />
+    <option name="LAST_COMMIT_MESSAGE" value="Saving Island Data" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -773,8 +779,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/extrillius/skywars/Skywars.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="95" column="87" selection-start-line="95" selection-start-column="87" selection-end-line="95" selection-end-column="87" />
+        <state relative-caret-position="285">
+          <caret line="100" column="87" selection-start-line="100" selection-start-column="87" selection-end-line="100" selection-end-column="87" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
