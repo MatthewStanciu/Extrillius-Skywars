@@ -1,11 +1,12 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="Skywars:jar">
+  <artifact type="jar" build-on-make="true" name="Skywars:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/Skywars_jar</output-path>
     <root id="archive" name="Skywars.jar">
       <element id="module-output" name="Skywars" />
       <element id="file-copy" path="$PROJECT_DIR$/src/net/extrillius/skywars/plugin.yml" />
       <element id="file-copy" path="$PROJECT_DIR$/src/net/extrillius/skywars/Skywars.java" />
       <element id="file-copy" path="$PROJECT_DIR$/src/net/extrillius/skywars/ConfigAccessor.java" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/net/extrillius/skywars/maps.yml" />
     </root>
   </artifact>
 </component>
