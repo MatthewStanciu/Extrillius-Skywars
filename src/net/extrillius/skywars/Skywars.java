@@ -72,24 +72,35 @@ public class Skywars extends JavaPlugin implements Listener {
                         ChatColor.AQUA + "/island <map> <value>");
                 sender.sendMessage(ChatColor.DARK_RED + "Remember to select the middle island first!");
             }
-            if (args.length > 1 || args.length < 1) {
+            if (!(args.length == 1)) {
                 sender.sendMessage(ChatColor.GRAY + "Usage: " + ChatColor.AQUA + "/create <map>");
             }
         }
 
         if (cmd.getName().equalsIgnoreCase("island")) {
-            if (!(StringUtils.isNumeric(args[1]))) {
-                sender.sendMessage(ChatColor.RED + "Your second argument must be a number!");
-                sender.sendMessage(ChatColor.RED + "Usage: " + ChatColor.GRAY + "/island <map> <value>");
+            if (!(StringUtils.isNumeric(args[1]))) { // This is optional but easier. Can be removed if it doesn't work.
+                if (args[1].equalsIgnoreCase("main") || args[1].equalsIgnoreCase("mid")) {
+                    valueList.add("1");
+                }
+                else {
+                    sender.sendMessage(ChatColor.RED + "Your second argument must be a number!");
+                    sender.sendMessage(ChatColor.RED + "Usage: " + ChatColor.GRAY + "/island <map> <value>");
+                }
+                if (valueList.contains(args[1])) {
+                    sender.sendMessage(ChatColor.RED + "You've already defined this island.");
+                }
             }
-            if (args.length > 2 || args.length < 2) {
+            if (!(args.length == 2)) {
                 sender.sendMessage(ChatColor.RED + "Usage: " + ChatColor.GRAY + "/island <map> <value>");
             }
             s = getWorldEdit().getSelection(p);
             if (s == null) {
                 sender.sendMessage(ChatColor.RED + "Define a WorldEdit selection before running the /island command.");
             }
-            World world = s.getWorld(); // There's a "null" warning here, but that is solved in the IF above this.
+            World world = s.getWorld(); // There's a "null" warning, but this is fixed in the IF below.
+            if (world == null) {
+                sender.sendMessage(ChatColor.RED + "Cannot find world");
+            }
             Location minPoint = s.getMinimumPoint();
             Location maxPoint = s.getMaximumPoint();
             if (!(s instanceof CuboidSelection)) {
