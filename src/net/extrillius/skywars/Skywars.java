@@ -97,7 +97,7 @@ public class Skywars extends JavaPlugin implements Listener {
             if (s == null) {
                 sender.sendMessage(ChatColor.RED + "Define a WorldEdit selection before running the /island command.");
             }
-            World world = s.getWorld(); // There's a "null" warning, but this is fixed in the IF below.
+            World world = s.getWorld(); // There's a "null" warning, but this is fixed in the IF below
             if (world == null) {
                 sender.sendMessage(ChatColor.RED + "Cannot find world");
             }
