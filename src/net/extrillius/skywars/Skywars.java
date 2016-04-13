@@ -56,11 +56,11 @@ public class Skywars extends JavaPlugin implements Listener {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         Player p = (Player) sender;
         Selection s = getWorldEdit().getSelection(p);
-        if (!(sender instanceof Player)) { //There's a warning here, but it shouldn't be here.
-            sender.sendMessage("Only players can use setup commands!");
-        }
 
         if (cmd.getName().equalsIgnoreCase("create")) {
+            if (!(sender instanceof Player)) { //There's a warning here, but it shouldn't be here.
+                sender.sendMessage("Only players can use setup commands!");
+            }
             if (args.length == 1) {
                 if (!(sender.hasPermission("skywars.create"))) {
                     sender.sendMessage(ChatColor.RED + "Creating maps is an admin-only command.");
@@ -78,6 +78,9 @@ public class Skywars extends JavaPlugin implements Listener {
         }
 
         if (cmd.getName().equalsIgnoreCase("island")) {
+            if (!(sender instanceof Player)) { //There's a warning here, but it shouldn't be here.
+                sender.sendMessage("Only players can use setup commands!");
+            }
             if (!(StringUtils.isNumeric(args[1]))) { // This is optional but easier. Can be removed if it doesn't work.
                 if (args[1].equalsIgnoreCase("main") || args[1].equalsIgnoreCase("mid")) {
                     valueList.add("1");
@@ -113,6 +116,9 @@ public class Skywars extends JavaPlugin implements Listener {
         }
 
         if (cmd.getName().equalsIgnoreCase("delete")) {
+            if (!(sender instanceof Player)) { //There's a warning here, but it shouldn't be here.
+                sender.sendMessage("Only players can use setup commands!");
+            }
             if (!(sender.hasPermission("skywars.delete"))) {
                 sender.sendMessage(ChatColor.RED + "Deleting maps is an admin-only command.");
             }
