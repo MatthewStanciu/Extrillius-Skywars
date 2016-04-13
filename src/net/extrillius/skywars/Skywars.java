@@ -77,15 +77,11 @@ public class Skywars extends JavaPlugin implements Listener {
             }
         }
 
+        // All islands will be randomly relative to Island 1
         if (cmd.getName().equalsIgnoreCase("island")) {
             if (!(StringUtils.isNumeric(args[1]))) { // This is optional but easier. Can be removed if it doesn't work.
-                if (args[1].equalsIgnoreCase("main") || args[1].equalsIgnoreCase("mid")) {
-                    valueList.add("1");
-                }
-                else {
                     sender.sendMessage(ChatColor.RED + "Your second argument must be a number!");
                     sender.sendMessage(ChatColor.RED + "Usage: " + ChatColor.GRAY + "/island <map> <value>");
-                }
                 if (valueList.contains(args[1])) {
                     sender.sendMessage(ChatColor.RED + "You've already defined this island.");
                 }
@@ -100,6 +96,9 @@ public class Skywars extends JavaPlugin implements Listener {
             World world = s.getWorld(); // There's a "null" warning, but this is fixed in the IF below
             if (world == null) {
                 sender.sendMessage(ChatColor.RED + "Cannot find world");
+            }
+            else {
+                sender.sendMessage(ChatColor.RED + "Cannot find world.");
             }
             Location minPoint = s.getMinimumPoint();
             Location maxPoint = s.getMaximumPoint();
