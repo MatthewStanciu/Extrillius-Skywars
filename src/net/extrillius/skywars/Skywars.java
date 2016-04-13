@@ -118,7 +118,6 @@ public class Skywars extends JavaPlugin implements Listener {
             }
             // the actual command
         }
-
         return true;
     }
 }
