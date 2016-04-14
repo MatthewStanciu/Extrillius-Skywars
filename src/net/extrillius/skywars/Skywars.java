@@ -35,8 +35,8 @@ public class Skywars extends JavaPlugin implements Listener {
         pm.registerEvents(this, this);
 
         this.mapsAccessor = new ConfigAccessor(this, "maps.yml");
-
         this.valueAccessor = new ConfigAccessor(this, "values.yml"); // I don't think addDefault is necessary (maybe)
+        // valueAccessor can possibly be replaced with a simple ArrayList, but I'm not sure.
     }
 
     public WorldEditPlugin getWorldEdit() {
@@ -56,11 +56,11 @@ public class Skywars extends JavaPlugin implements Listener {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         Player p = (Player) sender;
         Selection s = getWorldEdit().getSelection(p);
-        if (!(sender instanceof Player)) { //There's a warning here, but it shouldn't be here.
-            sender.sendMessage("Only players can use setup commands!");
-        }
 
         if (cmd.getName().equalsIgnoreCase("create")) {
+            if (!(sender instanceof Player)) { //There's a warning here, but it shouldn't be here.
+                sender.sendMessage("Only players can use setup commands!");
+            }
             if (args.length == 1) {
                 if (!(sender.hasPermission("skywars.create"))) {
                     sender.sendMessage(ChatColor.RED + "Creating maps is an admin-only command.");
@@ -79,6 +79,9 @@ public class Skywars extends JavaPlugin implements Listener {
 
         // All islands will be randomly relative to Island 1
         if (cmd.getName().equalsIgnoreCase("island")) {
+            if (!(sender instanceof Player)) { //There's a warning here, but it shouldn't be here.
+                sender.sendMessage("Only players can use setup commands!");
+            }
             if (!(StringUtils.isNumeric(args[1]))) { // This is optional but easier. Can be removed if it doesn't work.
                     sender.sendMessage(ChatColor.RED + "Your second argument must be a number!");
                     sender.sendMessage(ChatColor.RED + "Usage: " + ChatColor.GRAY + "/island <map> <value>");
@@ -112,6 +115,9 @@ public class Skywars extends JavaPlugin implements Listener {
         }
 
         if (cmd.getName().equalsIgnoreCase("delete")) {
+            if (!(sender instanceof Player)) { //There's a warning here, but it shouldn't be here.
+                sender.sendMessage("Only players can use setup commands!");
+            }
             if (!(sender.hasPermission("skywars.delete"))) {
                 sender.sendMessage(ChatColor.RED + "Deleting maps is an admin-only command.");
             }
