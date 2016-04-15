@@ -54,13 +54,18 @@ public class Skywars extends JavaPlugin implements Listener {
     }
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        Player p = (Player) sender;
+        if (!(sender instanceof Player)) {
+            sender.sendMessage("Only players can send commands!");
+        }
+        Player p = (Player) sender; // won't happen lol
+
         Selection s = getWorldEdit().getSelection(p);
+        World world = s.getWorld();
+        if (world == null) {
+            sender.sendMessage(ChatColor.RED + "Cannot find world!");
+        }
 
         if (cmd.getName().equalsIgnoreCase("create")) {
-            if (!(sender instanceof Player)) { //There's a warning here, but it shouldn't be here.
-                sender.sendMessage("Only players can use setup commands!");
-            }
             if (args.length == 1) {
                 if (!(sender.hasPermission("skywars.create"))) {
                     sender.sendMessage(ChatColor.RED + "Creating maps is an admin-only command.");
@@ -77,11 +82,7 @@ public class Skywars extends JavaPlugin implements Listener {
             }
         }
 
-        // All islands will be randomly relative to Island 1
         if (cmd.getName().equalsIgnoreCase("island")) {
-            if (!(sender instanceof Player)) { //There's a warning here, but it shouldn't be here.
-                sender.sendMessage("Only players can use setup commands!");
-            }
             if (!(StringUtils.isNumeric(args[1]))) { // This is optional but easier. Can be removed if it doesn't work.
                     sender.sendMessage(ChatColor.RED + "Your second argument must be a number!");
                     sender.sendMessage(ChatColor.RED + "Usage: " + ChatColor.GRAY + "/island <map> <value>");
@@ -96,18 +97,12 @@ public class Skywars extends JavaPlugin implements Listener {
             if (s == null) {
                 sender.sendMessage(ChatColor.RED + "Define a WorldEdit selection before running the /island command.");
             }
-            World world = s.getWorld(); // There's a "null" warning, but this is fixed in the IF below
-            if (world == null) {
-                sender.sendMessage(ChatColor.RED + "Cannot find world");
-            }
-            else {
-                sender.sendMessage(ChatColor.RED + "Cannot find world.");
-            }
             Location minPoint = s.getMinimumPoint();
             Location maxPoint = s.getMaximumPoint();
             if (!(s instanceof CuboidSelection)) {
                 sender.sendMessage(ChatColor.RED + "All you have to do is select an island as a cuboid ;)");
             }
+            
             this.mapsAccessor.getConfig().set("maps." + args[0] + ".loc1", minPoint);
             this.mapsAccessor.getConfig().set("maps." + args[0] + ".loc2", maxPoint);
             valueList.add(args[1]);
@@ -115,9 +110,6 @@ public class Skywars extends JavaPlugin implements Listener {
         }
 
         if (cmd.getName().equalsIgnoreCase("delete")) {
-            if (!(sender instanceof Player)) { //There's a warning here, but it shouldn't be here.
-                sender.sendMessage("Only players can use setup commands!");
-            }
             if (!(sender.hasPermission("skywars.delete"))) {
                 sender.sendMessage(ChatColor.RED + "Deleting maps is an admin-only command.");
             }
