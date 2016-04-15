@@ -39,7 +39,7 @@ public class Skywars extends JavaPlugin implements Listener {
         // valueAccessor can possibly be replaced with a simple ArrayList, but I'm not sure.
     }
 
-    public WorldEditPlugin getWorldEdit() {
+    private WorldEditPlugin getWorldEdit() {
         Plugin plugin = getServer().getPluginManager().getPlugin("WorldEdit");
 
         if (plugin instanceof WorldEditPlugin) return (WorldEditPlugin) plugin;
@@ -55,15 +55,15 @@ public class Skywars extends JavaPlugin implements Listener {
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage("Only players can send commands!");
+            sender.sendMessage("Only players can use commands!");
+            return false;
         }
-        Player p = (Player) sender; // won't happen lol
-
-        Selection s = getWorldEdit().getSelection(p);
-        World world = s.getWorld();
-        if (world == null) {
-            sender.sendMessage(ChatColor.RED + "Cannot find world!");
+        Player p = (Player) sender;
+        Selection s = getWorldEdit().getSelection(p); // why warning
+        if (s == null) {
+            sender.sendMessage(ChatColor.RED + "You haven't defined a selection yet.");
         }
+        
 
         if (cmd.getName().equalsIgnoreCase("create")) {
             if (args.length == 1) {
@@ -82,6 +82,7 @@ public class Skywars extends JavaPlugin implements Listener {
             }
         }
 
+        // All islands will be randomly relative to Island 1
         if (cmd.getName().equalsIgnoreCase("island")) {
             if (!(StringUtils.isNumeric(args[1]))) { // This is optional but easier. Can be removed if it doesn't work.
                     sender.sendMessage(ChatColor.RED + "Your second argument must be a number!");
@@ -97,12 +98,15 @@ public class Skywars extends JavaPlugin implements Listener {
             if (s == null) {
                 sender.sendMessage(ChatColor.RED + "Define a WorldEdit selection before running the /island command.");
             }
+            World world = s.getWorld(); // There's a "null" warning, but this is fixed in the IF below
+            if (world == null) {
+                sender.sendMessage(ChatColor.RED + "Cannot find world");
+            }
             Location minPoint = s.getMinimumPoint();
             Location maxPoint = s.getMaximumPoint();
             if (!(s instanceof CuboidSelection)) {
                 sender.sendMessage(ChatColor.RED + "All you have to do is select an island as a cuboid ;)");
             }
-            
             this.mapsAccessor.getConfig().set("maps." + args[0] + ".loc1", minPoint);
             this.mapsAccessor.getConfig().set("maps." + args[0] + ".loc2", maxPoint);
             valueList.add(args[1]);
