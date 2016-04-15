@@ -60,6 +60,10 @@ public class Skywars extends JavaPlugin implements Listener {
         }
         Player p = (Player) sender;
         Selection s = getWorldEdit().getSelection(p); // why warning
+        World world = p.getWorld();
+        if (world == null) {
+            sender.sendMessage(ChatColor.RED + "Cannot find world!");
+        }
         if (s == null) {
             sender.sendMessage(ChatColor.RED + "You haven't defined a selection yet.");
         }
@@ -97,10 +101,6 @@ public class Skywars extends JavaPlugin implements Listener {
             s = getWorldEdit().getSelection(p);
             if (s == null) {
                 sender.sendMessage(ChatColor.RED + "Define a WorldEdit selection before running the /island command.");
-            }
-            World world = s.getWorld(); // There's a "null" warning, but this is fixed in the IF below
-            if (world == null) {
-                sender.sendMessage(ChatColor.RED + "Cannot find world");
             }
             Location minPoint = s.getMinimumPoint();
             Location maxPoint = s.getMaximumPoint();
